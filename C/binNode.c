@@ -7,18 +7,15 @@ BinNode* Add(BinNode* node, int x) {
     return node->prev;
 }
 
-BinNode* Insert(BinNode* node, int pos, int x) {
-    if(pos == NULL_POS) return Add(node, x);
-    int i = 0;
-    while(node->prev != NULL) node = node->prev;
-    while(i++ <= pos && node->next != NULL) node = node->next;
-    if(node->next == NULL) {
+BinNode* Insert(BinNode* node, BinNode* pos, int x) {
+    if(!pos) return Add(node, x);
+    while(node->prev) node = node->prev;
+    while(node->next && node->next->data != pos->data);
+    if(node->next->data == pos->data) {
         node->next = newNode(x, node, NULL);
         return node;
-    }
-
-    node->next = newNode(x, node, node->next->next);
-    return node;
+    } 
+    return NULL;
 }
 
 BinNode* InsertSorted(BinNode* node, int x) {

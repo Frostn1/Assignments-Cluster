@@ -16,11 +16,11 @@ typedef struct BinNode {
 
 // Addition functions
 BinNode* Add(BinNode* node, int x);
-BinNode* Insert(BinNode* node, int pos, int x); // if @pos is null, @x will be added at the end of the list
+BinNode* Insert(BinNode* node, BinNode* pos, int x); // if @pos is null, @x will be added at the end of the list
 BinNode* InsertSorted(BinNode* node, int x);
 
 // Creation functions
-BinNode* newNode(int data);
+BinNode* newNode(int data, BinNode* prev, BinNode* next);
 BinNode* Build(int* arr, int size); // if @arr is null, an empty list will be returned
 
 // Removing functions
