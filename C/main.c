@@ -1,9 +1,9 @@
 #include "binNode.h"
 #include <stdio.h>
 
-int main() {
-    int numArray[] = {3, 12, 6, 4, 9, 1, 23, 15, 7};
-    BinNode* nodeList = Build(numArray, sizeof(numArray)/sizeof(int));
+void unSortedTest() {
+    int numArray[] = { 3, 12, 6, 4, 9, 1, 23, 15, 7 };
+    BinNode* nodeList = Build(numArray, sizeof(numArray) / sizeof(int));
 
     // Insertion
     printf("\nInsertion Test:\n");
@@ -22,6 +22,20 @@ int main() {
     RemoveAt(nodeList, newNode(4, NULL, NULL));
     putchar('\n');
     Show(nodeList);
+}
 
+void sortedTest() {
+    int numArray[] = { 3, 12, 6, 4, 9, 1, 23, 15, 7 };
+    BinNode* nodeList = newNode(numArray[0], NULL, NULL);
+    for (size_t i = 1; i < sizeof(numArray)/sizeof(int); i++) {
+        InsertSorted(nodeList, numArray[i]);
+    }
+    Show(nodeList);
+}
+
+
+int main() {
+    
+    sortedTest();
     return 0;
 }

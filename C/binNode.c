@@ -19,9 +19,11 @@ BinNode* Insert(BinNode* node, BinNode* pos, int x) {
 }
 
 BinNode* InsertSorted(BinNode* node, int x) {
-    while(node->prev != NULL) node = node->prev;
-    while(node->next != NULL && node->data < x) node = node->next;
-    node->next = newNode(x, node, node->next);
+    if (!node) return node = newNode(x, NULL, NULL);
+    while(node->prev) node = node->prev;
+    while(node->next && node->data < x) node = node->next;
+    if (node->data > x) node->prev = newNode(x, node->prev, node);
+    else node->next = newNode(x, node, node->next);
     return node;
 }
 
