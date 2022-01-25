@@ -10,9 +10,9 @@ BinNode* Add(BinNode* node, int x) {
 BinNode* Insert(BinNode* node, BinNode* pos, int x) {
     if(!pos) return Add(node, x);
     while(node->prev) node = node->prev;
-    while(node->next && node->next->data != pos->data);
-    if(node->next->data == pos->data) {
-        node->next = newNode(x, node, NULL);
+    while(node && node->data != pos->data) node = node->next;
+    if(node->data == pos->data) {
+        node->next = newNode(x, node, node->next);
         return node;
     } 
     return NULL;
@@ -56,11 +56,11 @@ BinNode* Remove(BinNode* node) {
 
 BinNode* RemoveAt(BinNode* node, BinNode* pos) {
     while(node->prev) node = node->prev;
-    while(node->next && node->next->data != pos->data);
+    while(node->next && node->next->data != pos->data) node = node->next;
     if(node->next->data == pos->data) {
         BinNode* temp = node->next;
         node->next = node->next->next;
-        node->next->prev = node;
+        if(node->next) node->next->prev = node;
         FreeNode(temp);
         return node;
     } 
