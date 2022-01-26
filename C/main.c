@@ -28,7 +28,7 @@ void sortedTest() {
     int numArray[] = { 3, 12, 6, 4, 9, 1, 23, 15, 7 };
     BinNode* nodeList = newNode(numArray[0], NULL, NULL);
     for (size_t i = 1; i < sizeof(numArray)/sizeof(int); i++) {
-        InsertSorted(nodeList, numArray[i]);
+        nodeList = InsertSorted(nodeList, numArray[i]);
     }
     Show(nodeList);
 }
