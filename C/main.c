@@ -30,6 +30,23 @@ void sortedTest() {
     for (size_t i = 1; i < sizeof(numArray)/sizeof(int); i++) {
         nodeList = InsertSorted(nodeList, numArray[i]);
     }
+    printf("\nDefault:\n");
+    Show(nodeList);
+
+    printf("\nInsertion Test:\n");
+    Show(nodeList);
+    InsertSorted(nodeList, 37);
+    InsertSorted(nodeList, 54);
+    InsertSorted(nodeList, 8);
+    putchar('\n');
+    Show(nodeList);
+
+    // Deletion
+    printf("\nDeletion Test:\n");
+    Show(nodeList);
+    RemoveAt(nodeList, newNode(54, NULL, NULL));
+    RemoveAt(nodeList, newNode(4, NULL, NULL));
+    putchar('\n');
     Show(nodeList);
 }
 
